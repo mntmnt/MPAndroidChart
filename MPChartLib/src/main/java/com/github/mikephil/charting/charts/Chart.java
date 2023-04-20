@@ -789,6 +789,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             Highlight highlight = mIndicesToHighlight[i];
 
             IDataSet set = mData.getDataSetByIndex(highlight.getDataSetIndex());
+            if ( set == null ) continue; /// BugFix: in case of often adding/removing items the set may be null
 
             Entry e = mData.getEntryForHighlight(mIndicesToHighlight[i]);
             int entryIndex = set.getEntryIndex(e);
